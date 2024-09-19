@@ -6,7 +6,7 @@
     <title>Emploi du Temps</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background: url('https://wallpaperaccess.com/full/799795.jpg') no-repeat center center fixed;
@@ -20,21 +20,44 @@
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease-in-out;
+            position: relative;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .class-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            animation: slideIn 1s ease-in-out;
+        }
+        .live-time, .live-date {
+            font-size: 20px;
+            color: #555;
+            margin-top: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
         .schedule h2 {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
         }
         .logo {
             display: block;
             margin: 0 auto 20px;
             width: 100px;
             height: auto;
+            animation: fadeIn 2s ease-in-out;
         }
         .class {
             display: flex;
@@ -46,27 +69,36 @@
             background-color: #f9f9f9;
             border-radius: 5px;
             margin-bottom: 10px;
+            animation: fadeInUp 1s ease-in-out;
         }
         .class:hover {
             background-color: #e0f7fa;
             transform: scale(1.02);
         }
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
         .time {
-            color: #888;
+            color: #FF5733; /* Couleur pour le temps */
             flex: 1;
+            text-align: center;
         }
         .name {
-            color: #333;
+            color: #000; /* Couleur noire pour les cours */
             flex: 2;
             font-weight: bold;
+            text-align: center;
         }
         .prof {
-            color: #555;
+            color: #555; /* Couleur gris foncé pour les profs */
             flex: 2;
+            text-align: center;
         }
         .room {
-            color: #007BFF;
+            color: #007BFF; /* Couleur bleue pour les salles */
             flex: 1;
+            text-align: center;
         }
         .status {
             padding: 5px;
@@ -74,6 +106,7 @@
             font-size: 12px;
             margin-left: 10px;
             flex: 1;
+            text-align: center;
         }
         .cancelled {
             background-color: #ffcccc;
@@ -103,6 +136,21 @@
             font-size: 14px;
             color: #555;
         }
+        .floating-window {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: slideInFromRight 1s ease-in-out;
+        }
+        @keyframes slideInFromRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
         @media (max-width: 600px) {
             .schedule {
                 padding: 10px;
@@ -119,150 +167,137 @@
 </head>
 <body>
     <div class="schedule">
-        <img src="https://cdn-icons-png.flaticon.com/512/10037/10037984.png" alt="Logo" class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/10037/10037984.png" alt="Logo de l'école" class="logo">
+        <div class="header">
+            <div class="class-name">1MIT</div>
+            <div class="live-time" id="live-time"></div>
+            <div class="live-date" id="live-date"></div>
+        </div>
         <div class="navigation">
             <a href="#" id="prev-day">← Précédent</a>
             <a href="#" id="next-day">Suivant →</a>
         </div>
         <h2 id="day-title">Emploi du Temps - Lundi</h2>
         <div id="monday" class="day">
-            <div class="class">
-                <div class="time">8h55</div>
-                <div class="name">PREVENT. SEMAINE Q1</div>
-                <div class="prof">Prof: M. Dupont</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-            <div class="class">
-                <div class="time">9h05</div>
-                <div class="name">ANGLAIS LV1</div>
-                <div class="prof">Prof: Mme. Martin</div>
-                <div class="status cancelled">Cours annulé</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-            <div class="class">
-                <div class="time">10h20</div>
-                <div class="name">LEMON A.</div>
-                <div class="prof">Prof: M. Bernard</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-            <div class="class">
-                <div class="time">13h30</div>
-                <div class="name">FRANCAIS-HIST.-GEOGR</div>
-                <div class="prof">Prof: Mme. Lefevre</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-            <div class="class">
-                <div class="time">16h30</div>
-                <div class="name">PT FRANCAIS-HIST.-G.</div>
-                <div class="prof">Prof: M. Durand</div>
-                <div class="status room-change">Changement de salle</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-        </div>
-        <div id="tuesday" class="day" style="display: none;">
+            <div class="floating-window">Jour passé</div>
             <div class="class">
                 <div class="time">8h00</div>
-                <div class="name">CHEF D'OEUVRE</div>
-                <div class="prof">Prof: M. Vandenbussche</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="name">FRANCAIS-HIST.GEOGR</div>
+                <div class="prof">Prof: Rocipon A.</div>
+                <div class="status room-change">Cours modifié</div>
+                <div class="room">Salle: 11<span class="11"></span></div>
+            </div>
+            <div class="class">
+                <div class="time">8h55</div>
+                <div class="name">PREVENT.-SANTE-ENV.</div>
+                <div class="prof">Prof: Lemonnier A.</div>
+                <div class="room">Salle: 09<span class="09"></span></div>
+            </div>
+            <div class="class">
+                <div class="time">10h05</div>
+                <div class="name">ANGLAIS LV1</div>
+                <div class="prof">Prof: Ienfa J.</div>
+                <div class="status cancelled">Cours annulé</div>
+                <div class="room">Salle: 20<span class="20"></span></div>
             </div>
             <div class="class">
                 <div class="time">11h00</div>
-                <div class="name">FABRICAT.REALISAT.TP</div>
-                <div class="prof">Prof: M. Vandenbussche</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-            <div class="class">
-                <div class="time">13h00</div>
-                <div class="name">VIE DE CLASSE</div>
-                <div class="prof">Prof: M. Froment</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-            <div class="class">
-                <div class="time">13h30</div>
-                <div class="name">CO-INTERVENTION MATHS</div>
-                <div class="prof">Prof: M. Froment, M. Vandenbussche</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-            <div class="class">
-                <div class="time">14h25</div>
-                <div class="name">AIDE INDIV. MATHS</div>
-                <div class="prof">Prof: M. Froment</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-        </div>
-        <div id="wednesday" class="day" style="display: none;">
-            <div class="class">
-                <div class="time">Toute la journée</div>
                 <div class="name">Pas de cours</div>
-            </div>
-        </div>
-        <div id="thursday" class="day" style="display: none;">
-            <div class="class">
-                <div class="time">8h00</div>
-                <div class="name">FABRICAT.REALISAT.TP</div>
-                <div class="prof">Prof: M. Ballesteros</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
             </div>
             <div class="class">
                 <div class="time">11h55</div>
                 <div class="name">Déjeuner</div>
             </div>
             <div class="class">
-                <div class="time">13h00</div>
-                <div class="name">ED.PHYSIQUE & SPORT.</div>
-                <div class="prof">Prof: M. Constant</div>
-                                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="time">12h25</div>
+                <div class="name">Test Positionnement</div>
+                <div class="prof">Prof: Rocipon A.</div>
+                <div class="status room-change">Changement de salle</div>
+                <div class="room">Salle: INFO 15<span class="INFO 15"></span></div>
             </div>
             <div class="class">
-                <div class="time">15h20</div>
-                <div class="name">AIDE INDIV. FRANCAIS</div>
-                <div class="prof">Prof: M. Rocipon</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="time">13h30</div>
+                <div class="name">FABRICAT.REALISAT.TP</div>
+                <div class="prof">Prof:Vandembusche P.</div>
+                <div class="status cancelled">Abs.administrative</div>
+                <div class="room">Salle: PT MIT<span class="room-number"></span></div>
             </div>
             <div class="class">
                 <div class="time">16h30</div>
-                <div class="name">RECEPTION A.</div>
-                <div class="prof">Prof: M. Rocipon</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="name">FRANCAIS-HIST.-GEOGR.</div>
+                <div class="prof">Prof: Rocipon A.</div>
+                <div class="status cancelled">Cours annulé</div>
+                <div class="room">Salle: 09<span class="room-number"></span></div>
+            </div>
+        </div>
+        <div id="tuesday" class="day" style="display: none;">
+            <div class="floating-window">Jour passé</div>
+            <div class="class">
+                <div class="time">8h00 à 18h00</div>
+                <div class="name">Sortie Pédagogique</div>
+            </div>
+        </div>
+        <div id="wednesday" class="day" style="display: none;">
+            <div class="floating-window">Jour passé</div>
+            <div class="class">
+                <div class="time">Toute la journée</div>
+                <div class="name">Pas de cours</div>
+            </div>
+        </div>
+        <div id="thursday" class="day" style="display: none;">
+            <div class="floating-window">Jour passé</div>
+            <div class="class">
+                <div class="time">8h00</div>
+                <div class="name">FABRICAT.REALISAT.TP</div>
+                <div class="prof">Prof: Ballesteros F.</div>
+                <div class="room">Salle: L3-PT MIT<span class="room-number"></span></div>
+            </div>
+            <div class="class">
+                <div class="time">11h55</div>
+                <div class="name">Déjeuner</div>
+            </div>
+            <div class="class">
+                <div class="time">13h30</div>
+                <div class="name">ED.PHYSIQUE & SPORT.</div>
+                <div class="prof">Prof: Constant F.</div>
+            </div>
+            <div class="class">
+                <div class="time">15h35</div>
+                <div class="name">AIDE INDIV. FRANCAIS</div>
+                <div class="prof">Prof: Rocipon A.</div>
+                <div class="room">Salle: 13<span class="room-number"></span></div>
             </div>
         </div>
         <div id="friday" class="day" style="display: none;">
             <div class="class">
                 <div class="time">8h00</div>
                 <div class="name">DESSIN CONSTRUCTION</div>
-                <div class="prof">Prof: M. Manganoni</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="prof">Prof: Manganoni S.</div>
+                <div class="room">Salle: 14 Construction<span class="room-number"></span></div>
             </div>
             <div class="class">
-                <div class="time">9h50</div>
+                <div class="time">10h05</div>
                 <div class="name">ARTS APPLIQUES</div>
-                <div class="prof">Prof: M. Tardivel</div>
+                <div class="prof">Prof: Tardivel J.</div>
                 <div class="room">Salle: <span class="room-number"></span></div>
             </div>
             <div class="class">
                 <div class="time">11h00</div>
-                <div class="name">MATHS SCIENCES</div>
-                <div class="prof">Prof: M. Froment</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="name">Test Positionnement</div>
+                <div class="prof">Prof: Froment A.</div>
+                <div class="status room-change">Cours maintenu</div>
+                <div class="room">Salle: 06<span class="room-number"></span></div>
             </div>
             <div class="class">
-                <div class="time">13h30</div>
-                <div class="name">FABRICAT.REALISAT.TP</div>
-                <div class="prof">Prof: M. Vandenbussche</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="time">11h55</div>
+                <div class="name">Déjeuner</div>
             </div>
             <div class="class">
-                <div class="time">15h20</div>
-                <div class="name">CO-INTERVENTION FRANÇAIS</div>
-                <div class="prof">Prof: M. Rocipon, M. Vandenbussche</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
-            </div>
-            <div class="class">
-                <div class="time">16h30</div>
-                <div class="name">Changement de salle</div>
-                <div class="prof">Prof: M. Rocipon</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="time">14h55</div>
+                <div class="name">CO-INTERVENTION FRANCAIS</div>
+                <div class="prof">Prof: Rocipon A.</div>
+                <div class="status room-change">Cours modifié</div>
+                <div class="room">Salle: INFO 04<span class="room-number"></span></div>
             </div>
         </div>
         <div class="update-info">
@@ -293,6 +328,18 @@
                 document.getElementById("day-title").innerText = dayTitles[currentDayIndex];
             }
         });
+
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('live-time').textContent = timeString;
+
+            const dateString = now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('live-date').textContent = dateString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
     </script>
 </body>
 </html>
