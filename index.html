@@ -151,6 +151,10 @@
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
+        .past {
+            background-color: #d3d3d3 !important;
+            transition: background-color 0.5s ease;
+        }
         @media (max-width: 600px) {
             .schedule {
                 padding: 10px;
@@ -179,26 +183,19 @@
         </div>
         <h2 id="day-title">Emploi du Temps - Lundi</h2>
         <div id="monday" class="day">
-            <div class="floating-window">Jour passé</div>
-            <div class="class">
-                <div class="time">8h00</div>
-                <div class="name">FRANCAIS-HIST.GEOGR</div>
-                <div class="prof">Prof: Rocipon A.</div>
-                <div class="status room-change">Cours modifié</div>
-                <div class="room">Salle: 11<span class="11"></span></div>
-            </div>
             <div class="class">
                 <div class="time">8h55</div>
                 <div class="name">PREVENT.-SANTE-ENV.</div>
                 <div class="prof">Prof: Lemonnier A.</div>
                 <div class="room">Salle: 09<span class="09"></span></div>
+                <div class="time">9h50</div>
             </div>
             <div class="class">
                 <div class="time">10h05</div>
                 <div class="name">ANGLAIS LV1</div>
                 <div class="prof">Prof: Ienfa J.</div>
-                <div class="status cancelled">Cours annulé</div>
                 <div class="room">Salle: 20<span class="20"></span></div>
+                <div class="status cancelled">Cours annulé</div>
             </div>
             <div class="class">
                 <div class="time">11h00</div>
@@ -207,45 +204,78 @@
             <div class="class">
                 <div class="time">11h55</div>
                 <div class="name">Déjeuner</div>
+                <div class="time">12h25</div>
             </div>
             <div class="class">
                 <div class="time">12h25</div>
-                <div class="name">Test Positionnement</div>
+                <div class="name">FRANCAIS-HIST.-GEOGR</div>
                 <div class="prof">Prof: Rocipon A.</div>
-                <div class="status room-change">Changement de salle</div>
-                <div class="room">Salle: INFO 15<span class="INFO 15"></span></div>
+                <div class="room">Salle: 16<span class="16"></span></div>
+                <div class="time">13h30</div>
             </div>
             <div class="class">
                 <div class="time">13h30</div>
                 <div class="name">FABRICAT.REALISAT.TP</div>
-                <div class="prof">Prof:Vandembusche P.</div>
-                <div class="status cancelled">Abs.administrative</div>
+                <div class="prof">Prof: Vandembusche P.</div>
                 <div class="room">Salle: PT MIT<span class="room-number"></span></div>
+                <div class="time">16h30</div>
             </div>
             <div class="class">
                 <div class="time">16h30</div>
                 <div class="name">FRANCAIS-HIST.-GEOGR.</div>
                 <div class="prof">Prof: Rocipon A.</div>
-                <div class="status cancelled">Cours annulé</div>
                 <div class="room">Salle: 09<span class="room-number"></span></div>
+                <div class="time">17h25</div>
             </div>
         </div>
         <div id="tuesday" class="day" style="display: none;">
-            <div class="floating-window">Jour passé</div>
             <div class="class">
-                <div class="time">8h00 à 18h00</div>
-                <div class="name">Sortie Pédagogique</div>
+                <div class="time">8h00</div>
+                <div class="name">CHEF D'OEUVRE</div>
+                <div class="prof">Prof: Vandembusche P.</div>
+                <div class="room">Salle: L3 MFER, PT MIT<span class="room-number"></span></div>
+                <div class="time">11h00</div>
+            </div>
+            <div class="class">
+                <div class="time">11h00</div>
+                <div class="name">FABRICAT.REALISAT.TP</div>
+                <div class="prof">Prof: Vandembusche P.</div>
+                <div class="room">Salle: PT MIT<span class="room-number"></span></div>
+            </div>
+            <div class="class">
+                <div class="time">11h55</div>
+                <div class="name">Déjeuner</div>
+                <div class="time">13h00</div>
+            </div>
+            <div class="class">
+                <div class="time">13h00</div>
+                <div class="name">VIE DE CLASSE</div>
+                <div class="prof">Prof: Froment A.</div>
+                <div class="room">Salle: 09<span class="room-number"></span></div>
+                <div class="time">13h30</div>
+            </div>
+            <div class="class">
+                <div class="time">13h30</div>
+                <div class="name">CO-INTERVENTION MATHS</div>
+                <div class="prof">Prof: Froment A. - Vandembusche P.</div>
+                <div class="room">Salle: 07<span class="room-number"></span></div>
+                <div class="time">14h25</div>
+            </div>
+            <div class="class">
+                <div class="time">14h25</div>
+                <div class="name">AIDE INDIV.MATHS</div>
+                <div class="prof">Prof: Froment A.</div>
+                <div class="room">Salle: 07<span class="room-number"></span></div>
+                <div class="time">15h20</div>
             </div>
         </div>
         <div id="wednesday" class="day" style="display: none;">
-            <div class="floating-window">Jour passé</div>
             <div class="class">
                 <div class="time">Toute la journée</div>
                 <div class="name">Pas de cours</div>
             </div>
         </div>
         <div id="thursday" class="day" style="display: none;">
-            <div class="floating-window">Jour passé</div>
             <div class="class">
                 <div class="time">8h00</div>
                 <div class="name">FABRICAT.REALISAT.TP</div>
@@ -255,17 +285,20 @@
             <div class="class">
                 <div class="time">11h55</div>
                 <div class="name">Déjeuner</div>
+                <div class="time">13h00</div>
             </div>
             <div class="class">
                 <div class="time">13h30</div>
                 <div class="name">ED.PHYSIQUE & SPORT.</div>
                 <div class="prof">Prof: Constant F.</div>
+                <div class="time">15h20</div>
             </div>
             <div class="class">
                 <div class="time">15h35</div>
                 <div class="name">AIDE INDIV. FRANCAIS</div>
                 <div class="prof">Prof: Rocipon A.</div>
                 <div class="room">Salle: 13<span class="room-number"></span></div>
+                <div class="time">16h30</div>
             </div>
         </div>
         <div id="friday" class="day" style="display: none;">
@@ -274,34 +307,42 @@
                 <div class="name">DESSIN CONSTRUCTION</div>
                 <div class="prof">Prof: Manganoni S.</div>
                 <div class="room">Salle: 14 Construction<span class="room-number"></span></div>
+                <div class="time">9h50</div>
             </div>
             <div class="class">
                 <div class="time">10h05</div>
                 <div class="name">ARTS APPLIQUES</div>
                 <div class="prof">Prof: Tardivel J.</div>
-                <div class="room">Salle: <span class="room-number"></span></div>
+                <div class="room">Salle: Arts Appliques 2 Mods<span class="room-number"></span></div>
             </div>
             <div class="class">
                 <div class="time">11h00</div>
-                <div class="name">Test Positionnement</div>
+                <div class="name">MATHS SCIENCES</div>
                 <div class="prof">Prof: Froment A.</div>
-                <div class="status room-change">Cours maintenu</div>
                 <div class="room">Salle: 06<span class="room-number"></span></div>
             </div>
             <div class="class">
-                <div class="time">11h55</div>
+                <div class="time">12h25</div>
                 <div class="name">Déjeuner</div>
+                <div class="time">13h00</div>
             </div>
             <div class="class">
-                <div class="time">14h55</div>
+                <div class="time">13h30</div>
+                <div class="name">FABRICAT.REALISAT.TP</div>
+                <div class="prof">Prof: Vandembusche P.</div>
+                <div class="room">Salle: PT MIT<span class="room-number"></span></div>
+                <div class="time">15h20</div>
+            </div>
+            <div class="class">
+                <div class="time">15h35</div>
                 <div class="name">CO-INTERVENTION FRANCAIS</div>
-                <div class="prof">Prof: Rocipon A.</div>
-                <div class="status room-change">Cours modifié</div>
+                <div class="prof">Prof: Rocipon A. - Vandembusche P.</div>
                 <div class="room">Salle: INFO 04<span class="room-number"></span></div>
+                <div class="time">16h30</div>
             </div>
         </div>
         <div class="update-info">
-            Mise à jour chaque soir à 12:00
+            Mise à jour chaque soir à 12:00h
         </div>
     </div>
     <script>
@@ -336,6 +377,17 @@
 
             const dateString = now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             document.getElementById('live-date').textContent = dateString;
+
+            // Griser les cours passés
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            document.querySelectorAll('.class').forEach(classElement => {
+                const timeText = classElement.querySelector('.time').textContent;
+                const [hours, minutes] = timeText.split('h').map(Number);
+                const classTime = hours * 60 + (minutes || 0);
+                if (classTime < currentTime) {
+                    classElement.classList.add('past');
+                }
+            });
         }
 
         setInterval(updateTime, 1000);
